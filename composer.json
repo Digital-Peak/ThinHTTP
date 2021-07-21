@@ -1,0 +1,19 @@
+{
+	"name": "digital-peak/thinhttp",
+	"type": "library",
+	"description": "A thin HTTP client for curl based requests.",
+	"keywords": [
+		"http",
+		"rest"
+	],
+	"homepage": "https://github.com/Digital-Peak/ThinHTTP",
+	"license": "MIT",
+	"require": {
+		"php": ">=7.4.0"
+	},
+	"autoload": {
+		"psr-4": {
+			"DigitalPeak\\": "src"
+		}
+	}
+}
