@@ -1,13 +1,13 @@
 <?php
 /**
- * @package   DPCalendar
+ * @package   ThinHTTP
  * @copyright Copyright (C) 2021 Digital Peak GmbH. <https://www.digital-peak.com>
  * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL
  */
 namespace DigitalPeak;
 
 /**
- * Helper class to make curl based HTTP requests. Contains helper functions for the most popular
+ * Curl wrapper class to make HTTP requests. Contains helper functions for the most popular
  * methods GET, POST, PUT and DELETE.
  *
  * Needs curl to work properly.
