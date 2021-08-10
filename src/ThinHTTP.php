@@ -4,6 +4,7 @@
  * @copyright Copyright (C) 2021 Digital Peak GmbH. <https://www.digital-peak.com>
  * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL
  */
+
 namespace DigitalPeak;
 
 /**
@@ -27,8 +28,13 @@ class ThinHTTP
 	 * @return \stdClass
 	 * @throws \Exception
 	 */
-	public function get($url, $userOrToken = null, $password = null, $headers = [], $curlOptions = [])
-	{
+	public function get(
+		string $url,
+		string $userOrToken = null,
+		string $password = null,
+		array $headers = [],
+		array $curlOptions = []
+	): \stdClass {
 		return $this->request($url, null, $userOrToken, $password, $headers, $curlOptions, 'get');
 	}
 
@@ -36,7 +42,7 @@ class ThinHTTP
 	 * Helper function to make a POST request.
 	 *
 	 * @param string   $url
-	 * @param string   $body
+	 * @param mixed    $body
 	 * @param string   $userOrToken
 	 * @param string   $password
 	 * @param string[] $headers
@@ -46,8 +52,14 @@ class ThinHTTP
 	 * @return \stdClass
 	 * @throws \Exception
 	 */
-	public function post($url, $body, $userOrToken = null, $password = null, $headers = [], $curlOptions = [])
-	{
+	public function post(
+		string $url,
+		mixed  $body,
+		string $userOrToken = null,
+		string $password = null,
+		array  $headers = [],
+		array  $curlOptions = []
+	): \stdClass {
 		return $this->request($url, $body, $userOrToken, $password, $headers, $curlOptions, 'post');
 	}
 
@@ -55,7 +67,7 @@ class ThinHTTP
 	 * Helper function to make a PUT request.
 	 *
 	 * @param string   $url
-	 * @param string   $body
+	 * @param mixed    $body
 	 * @param string   $userOrToken
 	 * @param string   $password
 	 * @param string[] $headers
@@ -65,8 +77,14 @@ class ThinHTTP
 	 * @return \stdClass
 	 * @throws \Exception
 	 */
-	public function put($url, $body, $userOrToken = null, $password = null, $headers = [], $curlOptions = [])
-	{
+	public function put(
+		string $url,
+		mixed  $body,
+		string $userOrToken = null,
+		string $password = null,
+		array  $headers = [],
+		array  $curlOptions = []
+	): \stdClass {
 		return $this->request($url, $body, $userOrToken, $password, $headers, $curlOptions, 'put');
 	}
 
@@ -83,8 +101,13 @@ class ThinHTTP
 	 * @return \stdClass
 	 * @throws \Exception
 	 */
-	public function delete($url, $userOrToken = null, $password = null, $headers = [], $curlOptions = [])
-	{
+	public function delete(
+		string $url,
+		string $userOrToken = null,
+		string $password = null,
+		array  $headers = [],
+		array  $curlOptions = []
+	): \stdClass {
 		return $this->request($url, null, $userOrToken, $password, $headers, $curlOptions, 'delete');
 	}
 
@@ -99,7 +122,7 @@ class ThinHTTP
 	 * If user is set but no password, then it is assumed it is a bearer token.
 	 *
 	 * @param string   $url
-	 * @param string   $body
+	 * @param mixed    $body
 	 * @param string   $userOrToken
 	 * @param string   $password
 	 * @param string[] $headers
@@ -108,8 +131,15 @@ class ThinHTTP
 	 * @return \stdClass
 	 * @throws \Exception
 	 */
-	public function request($url, $body = '', $userOrToken = null, $password = null, $headers = [], $curlOptions = [], $method = 'get')
-	{
+	public function request(
+		string $url,
+		mixed  $body = '',
+		string $userOrToken = null,
+		string $password = null,
+		array  $headers = [],
+		array  $curlOptions = [],
+		string $method = 'get'
+	) {
 		if (!function_exists('curl_version')) {
 			throw new \Exception('Curl must be installed, please contact an administrator!');
 		}
