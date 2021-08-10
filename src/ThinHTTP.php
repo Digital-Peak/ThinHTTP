@@ -151,10 +151,10 @@ class ThinHTTP
 		curl_setopt($ch, CURLOPT_USERAGENT, 'DPCalendar');
 
 		$headers[] = 'Accept: application/json';
-		if ($body && strpos($body, '{') === 0) {
+		if ($body && is_string($body) && strpos($body, '{') === 0) {
 			$headers[] = 'Content-Type: application/json';
 		}
-		if ($body && strpos($body, '<') === 0) {
+		if ($body && is_string($body) && strpos($body, '<') === 0) {
 			$headers[] = 'Content-Type: text/xml';
 		}
 		if ($userOrToken && !$password) {
