@@ -54,7 +54,7 @@ class ThinHTTP
 	 */
 	public function post(
 		string $url,
-		mixed  $body,
+		$body,
 		string $userOrToken = null,
 		string $password = null,
 		array  $headers = [],
@@ -79,7 +79,7 @@ class ThinHTTP
 	 */
 	public function put(
 		string $url,
-		mixed  $body,
+		$body,
 		string $userOrToken = null,
 		string $password = null,
 		array  $headers = [],
@@ -133,7 +133,7 @@ class ThinHTTP
 	 */
 	public function request(
 		string $url,
-		mixed  $body = '',
+		$body = '',
 		string $userOrToken = null,
 		string $password = null,
 		array  $headers = [],
