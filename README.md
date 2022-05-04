@@ -1,5 +1,5 @@
 # ThinHTTP
 
-A thin curl based HTPP client for PHP. It has zero dependencies (except curl).
+A thin curl based HTTP client for PHP. It has zero dependencies (except curl).
 
 Is optimized for Rest based requests.
