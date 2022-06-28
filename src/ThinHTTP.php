@@ -75,7 +75,12 @@ class ThinHTTP implements ThinHTTPInterface
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, strtoupper($method));
 		curl_setopt($ch, CURLOPT_USERAGENT, 'DPCalendar');
 
-		$headers[] = 'Accept: application/json, application/vnd.api+json';
+		$acceptHeader = array_filter($headers, function ($header) {
+			return strpos($header, 'Accept: ') === 0;
+		});
+		if (!$acceptHeader) {
+			$headers[] = 'Accept: application/json, application/vnd.api+json';
+		}
 		if ($body && is_string($body) && strpos($body, '{') === 0) {
 			$headers[] = 'Content-Type: application/json';
 		}
