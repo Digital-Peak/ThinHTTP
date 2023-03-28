@@ -76,18 +76,19 @@ class ThinHTTP implements ThinHTTPInterface
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, strtoupper($method));
 		curl_setopt($ch, CURLOPT_USERAGENT, 'DPCalendar');
 
-		$acceptHeader = array_filter($headers, function ($header) {
-			return strpos($header, 'Accept: ') === 0;
-		});
+		$acceptHeader = array_filter($headers, fn ($header) => strpos($header, 'Accept: ') === 0);
 		if (!$acceptHeader) {
 			$headers[] = 'Accept: application/json, application/vnd.api+json';
 		}
-		if ($body && is_string($body) && strpos($body, '{') === 0) {
+
+		$contentTypeHeader = array_filter($headers, fn ($header) => strpos($header, 'Content-Type: ') === 0);
+		if (!$contentTypeHeader && $body && is_string($body) && strpos($body, '{') === 0) {
 			$headers[] = 'Content-Type: application/json';
 		}
-		if ($body && is_string($body) && strpos($body, '<') === 0) {
+		if (!$contentTypeHeader && $body && is_string($body) && strpos($body, '<') === 0) {
 			$headers[] = 'Content-Type: text/xml';
 		}
+
 		if ($userOrToken && !$password) {
 			$headers[] = 'Authorization: Bearer ' . $userOrToken;
 		}
