@@ -13,7 +13,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"DigitalPeak\\": "src"
+			"DigitalPeak\\ThinHTTP\\": "src"
 		}
 	}
 }

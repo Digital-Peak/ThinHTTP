@@ -5,14 +5,14 @@
  * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL
  */
 
-namespace DigitalPeak;
+namespace DigitalPeak\ThinHTTP;
 
 /**
  * Curl implementation for the ThinHTTPInterface.
  *
  * Needs curl to work properly.
  */
-class ThinHTTP implements ThinHTTPInterface
+class CurlClient implements ClientInterface
 {
 	public function get(
 		string $url,

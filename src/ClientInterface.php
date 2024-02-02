@@ -5,25 +5,18 @@
  * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL
  */
 
-namespace DigitalPeak;
+namespace DigitalPeak\ThinHTTP;
 
 /**
  * Wrapper interface to make HTTP requests. Contains helpers for the most popular
  * methods GET, POST, PUT and DELETE.
  */
-interface ThinHTTPInterface
+interface ClientInterface
 {
 	/**
 	 * Helper function to make a GET request.
 	 *
 	 * @see ThinHTTP::request()
-	 * @param string   $url
-	 * @param string   $userOrToken
-	 * @param string   $password
-	 * @param string[] $headers
-	 * @param array    $options
-	 *
-	 * @return \stdClass
 	 * @throws \Exception
 	 */
 	public function get(
@@ -37,15 +30,7 @@ interface ThinHTTPInterface
 	/**
 	 * Helper function to make a POST request.
 	 *
-	 * @param string   $url
-	 * @param mixed    $body
-	 * @param string   $userOrToken
-	 * @param string   $password
-	 * @param string[] $headers
-	 * @param array    $options
-	 *
 	 * @see ThinHTTP::request()
-	 * @return \stdClass
 	 * @throws \Exception
 	 */
 	public function post(
@@ -60,15 +45,7 @@ interface ThinHTTPInterface
 	/**
 	 * Helper function to make a PUT request.
 	 *
-	 * @param string   $url
-	 * @param mixed    $body
-	 * @param string   $userOrToken
-	 * @param string   $password
-	 * @param string[] $headers
-	 * @param array    $options
-	 *
 	 * @see ThinHTTP::request()
-	 * @return \stdClass
 	 * @throws \Exception
 	 */
 	public function put(
@@ -83,14 +60,7 @@ interface ThinHTTPInterface
 	/**
 	 * Helper function to make a DELETE request.
 	 *
-	 * @param string   $url
-	 * @param string   $userOrToken
-	 * @param string   $password
-	 * @param string[] $headers
-	 * @param array    $options
-	 *
 	 * @see ThinHTTP::request()
-	 * @return \stdClass
 	 * @throws \Exception
 	 */
 	public function delete(
@@ -111,14 +81,6 @@ interface ThinHTTPInterface
 	 *
 	 * If user is set but no password, then it is assumed it is a bearer token.
 	 *
-	 * @param string   $url
-	 * @param mixed    $body
-	 * @param string   $userOrToken
-	 * @param string   $password
-	 * @param string[] $headers
-	 * @param string   $method
-	 *
-	 * @return \stdClass
 	 * @throws \Exception
 	 */
 	public function request(
