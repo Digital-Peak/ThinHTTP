@@ -1,26 +1,12 @@
 <?php
+/**
+ * @package   ThinHTTP
+ * @copyright Copyright (C) 2021 Digital Peak GmbH. <https://www.digital-peak.com>
+ * @license   http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL
+ */
 
-$config = new PhpCsFixer\Config();
+$config = require_once \dirname(__DIR__) . '/DPDocker/code/config/.php-cs-fixer.php';
 
-$config->setRules([
-		'@PSR12'                          => true,
-		'array_syntax'                    => ['syntax' => 'short'],
-		'whitespace_after_comma_in_array' => true,
-		'indentation_type'                => true,
-		'no_break_comment'                => false,
-		'binary_operator_spaces'          => [
-			'default'   => 'single_space',
-			'operators' => [
-				'||' => 'single_space',
-				'&&' => 'single_space',
-				'='  => 'align_single_space_minimal',
-				'+=' => 'align_single_space_minimal',
-				'=>' => 'align_single_space_minimal'
-			]
-		],
-		'no_useless_else' => true
-	])
-	->setUsingCache(false)
-	->setIndent("\t");
+$config->getFinder()->in(__DIR__);
 
 return $config;

@@ -21,8 +21,8 @@ interface ClientInterface
 	 */
 	public function get(
 		string $url,
-		string $userOrToken = null,
-		string $password = null,
+		?string $userOrToken = null,
+		?string $password = null,
 		array $headers = [],
 		array $options = []
 	): \stdClass;
@@ -36,8 +36,8 @@ interface ClientInterface
 	public function post(
 		string $url,
 		$body,
-		string $userOrToken = null,
-		string $password = null,
+		?string $userOrToken = null,
+		?string $password = null,
 		array  $headers = [],
 		array  $options = []
 	): \stdClass;
@@ -51,8 +51,8 @@ interface ClientInterface
 	public function put(
 		string $url,
 		$body,
-		string $userOrToken = null,
-		string $password = null,
+		?string $userOrToken = null,
+		?string $password = null,
 		array  $headers = [],
 		array  $options = []
 	): \stdClass;
@@ -65,8 +65,8 @@ interface ClientInterface
 	 */
 	public function delete(
 		string $url,
-		string $userOrToken = null,
-		string $password = null,
+		?string $userOrToken = null,
+		?string $password = null,
 		array  $headers = [],
 		array  $options = []
 	): \stdClass;
@@ -86,8 +86,8 @@ interface ClientInterface
 	public function request(
 		string $url,
 		$body = '',
-		string $userOrToken = null,
-		string $password = null,
+		?string $userOrToken = null,
+		?string $password = null,
 		array  $headers = [],
 		array  $options = [],
 		string $method = 'get'

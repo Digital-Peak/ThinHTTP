@@ -16,8 +16,8 @@ class CurlClient implements ClientInterface
 {
 	public function get(
 		string $url,
-		string $userOrToken = null,
-		string $password = null,
+		?string $userOrToken = null,
+		?string $password = null,
 		array $headers = [],
 		array $options = []
 	): \stdClass {
@@ -27,8 +27,8 @@ class CurlClient implements ClientInterface
 	public function post(
 		string $url,
 		$body,
-		string $userOrToken = null,
-		string $password = null,
+		?string $userOrToken = null,
+		?string $password = null,
 		array  $headers = [],
 		array  $options = []
 	): \stdClass {
@@ -38,8 +38,8 @@ class CurlClient implements ClientInterface
 	public function put(
 		string $url,
 		$body,
-		string $userOrToken = null,
-		string $password = null,
+		?string $userOrToken = null,
+		?string $password = null,
 		array  $headers = [],
 		array  $options = []
 	): \stdClass {
@@ -48,8 +48,8 @@ class CurlClient implements ClientInterface
 
 	public function delete(
 		string $url,
-		string $userOrToken = null,
-		string $password = null,
+		?string $userOrToken = null,
+		?string $password = null,
 		array  $headers = [],
 		array  $options = []
 	): \stdClass {
@@ -59,13 +59,13 @@ class CurlClient implements ClientInterface
 	public function request(
 		string $url,
 		$body = '',
-		string $userOrToken = null,
-		string $password = null,
+		?string $userOrToken = null,
+		?string $password = null,
 		array  $headers = [],
 		array  $options = [],
 		string $method = 'get'
 	): \stdClass {
-		if (!function_exists('curl_version')) {
+		if (!\function_exists('curl_version')) {
 			throw new \Exception('Curl must be installed, please contact an administrator!');
 		}
 
@@ -82,10 +82,10 @@ class CurlClient implements ClientInterface
 		}
 
 		$contentTypeHeader = array_filter($headers, fn ($header) => strpos($header, 'Content-Type: ') === 0);
-		if (!$contentTypeHeader && $body && is_string($body) && strpos($body, '{') === 0) {
+		if (!$contentTypeHeader && $body && \is_string($body) && strpos($body, '{') === 0) {
 			$headers[] = 'Content-Type: application/json';
 		}
-		if (!$contentTypeHeader && $body && is_string($body) && strpos($body, '<') === 0) {
+		if (!$contentTypeHeader && $body && \is_string($body) && strpos($body, '<') === 0) {
 			$headers[] = 'Content-Type: text/xml';
 		}
 
@@ -108,13 +108,13 @@ class CurlClient implements ClientInterface
 			$headerData = explode(':', $header, 2);
 
 			// Ignore invalid headers
-			if (count($headerData) < 2) {
-				return strlen($header);
+			if (\count($headerData) < 2) {
+				return \strlen($header);
 			}
 
 			$responseHeaders[strtolower(trim($headerData[0]))][] = trim(trim($headerData[1]), '\"');
 
-			return strlen($header);
+			return \strlen($header);
 		});
 
 		foreach ($options as $option => $value) {
@@ -139,7 +139,7 @@ class CurlClient implements ClientInterface
 			}
 		}
 
-		if (is_array($data)) {
+		if (\is_array($data)) {
 			$data = (object)['data' => $data];
 		}
 
