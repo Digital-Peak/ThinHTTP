@@ -125,8 +125,6 @@ class CurlClient implements ClientInterface
 		$info   = curl_getinfo($ch);
 		$error  = curl_errno($ch) ? curl_error($ch) : null;
 
-		curl_close($ch);
-
 		if ($error) {
 			throw new \Exception($error, $info['http_code']);
 		}
